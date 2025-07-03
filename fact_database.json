@@ -1,0 +1,322 @@
+{
+  "facts": [
+    {
+      "id": 1,
+      "category": "science",
+      "subcategory": "space",
+      "fact": "A day on Venus is longer than its year. Venus takes 243 Earth days to rotate on its axis, but only 225 Earth days to orbit the Sun.",
+      "source": "NASA",
+      "video_themes": ["luxury cars", "nature", "technology", "city streets"],
+      "voice_tone": "surprised",
+      "difficulty": "medium"
+    },
+    {
+      "id": 2,
+      "category": "science",
+      "subcategory": "biology",
+      "fact": "Honey never spoils. Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still perfectly edible.",
+      "source": "National Geographic",
+      "video_themes": ["food cooking", "nature", "luxury cars", "architecture"],
+      "voice_tone": "amazed",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "category": "history",
+      "subcategory": "medical",
+      "fact": "In 1923, Charles Osborne started hiccuping and didn't stop for 68 years. He hiccuped an estimated 430 million times before finally stopping in 1990.",
+      "source": "Guinness World Records",
+      "video_themes": ["people walking", "city streets", "technology", "nature"],
+      "voice_tone": "baffled",
+      "difficulty": "easy"
+    },
+    {
+      "id": 4,
+      "category": "psychology",
+      "subcategory": "brain",
+      "fact": "Your brain can't actually multitask. When you think you're doing two things at once, you're rapidly switching between tasks, making you 40% less efficient.",
+      "source": "Stanford University",
+      "video_themes": ["technology", "abstract patterns", "luxury cars", "people walking"],
+      "voice_tone": "informative",
+      "difficulty": "medium"
+    },
+    {
+      "id": 5,
+      "category": "science",
+      "subcategory": "physics",
+      "fact": "A single teaspoon of neutron star material weighs 5.5 billion tons. That's equivalent to 900 Great Pyramids of Giza.",
+      "source": "NASA",
+      "video_themes": ["space", "luxury cars", "nature", "technology"],
+      "voice_tone": "mind-blown",
+      "difficulty": "hard"
+    },
+    {
+      "id": 6,
+      "category": "history",
+      "subcategory": "inventions",
+      "fact": "The first computer programmer was a woman. Ada Lovelace wrote the first algorithm in 1843, 100 years before the first computer was built.",
+      "source": "Computer History Museum",
+      "video_themes": ["technology", "people walking", "city streets", "architecture"],
+      "voice_tone": "proud",
+      "difficulty": "medium"
+    },
+    {
+      "id": 7,
+      "category": "geography",
+      "subcategory": "countries",
+      "fact": "Russia has 11 different time zones. You can travel across the entire country and experience 11 different times of day.",
+      "source": "World Atlas",
+      "video_themes": ["city streets", "nature", "architecture", "people walking"],
+      "voice_tone": "surprised",
+      "difficulty": "easy"
+    },
+    {
+      "id": 8,
+      "category": "science",
+      "subcategory": "chemistry",
+      "fact": "Bananas are radioactive. They contain potassium-40, a naturally occurring radioactive isotope. But don't worry, you'd need to eat 10 million bananas to get radiation poisoning.",
+      "source": "MIT",
+      "video_themes": ["food cooking", "nature", "technology", "luxury cars"],
+      "voice_tone": "amused",
+      "difficulty": "medium"
+    },
+    {
+      "id": 9,
+      "category": "psychology",
+      "subcategory": "behavior",
+      "fact": "The average person has 6,200 thoughts per day, and 80% of them are negative. Your brain is literally wired to focus on problems.",
+      "source": "Psychology Today",
+      "video_themes": ["abstract patterns", "people walking", "technology", "nature"],
+      "voice_tone": "thoughtful",
+      "difficulty": "medium"
+    },
+    {
+      "id": 10,
+      "category": "history",
+      "subcategory": "war",
+      "fact": "During World War II, the US military trained pigeons to guide missiles. They would peck at targets on a screen to steer the missile.",
+      "source": "Smithsonian",
+      "video_themes": ["animals", "technology", "space", "nature"],
+      "voice_tone": "baffled",
+      "difficulty": "medium"
+    },
+    {
+      "id": 11,
+      "category": "science",
+      "subcategory": "ocean",
+      "fact": "The ocean contains 200,000 known species, but scientists estimate there are millions more we haven't discovered yet.",
+      "source": "National Oceanic and Atmospheric Administration",
+      "video_themes": ["underwater", "nature", "space", "luxury cars"],
+      "voice_tone": "wondering",
+      "difficulty": "easy"
+    },
+    {
+      "id": 12,
+      "category": "technology",
+      "subcategory": "internet",
+      "fact": "The first website went live in 1991. It's still online today at info.cern.ch, and it's just a simple text page about the World Wide Web project.",
+      "source": "CERN",
+      "video_themes": ["technology", "city streets", "architecture", "people walking"],
+      "voice_tone": "nostalgic",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "category": "psychology",
+      "subcategory": "memory",
+      "fact": "Your brain can process images in as little as 13 milliseconds. That's faster than the blink of an eye.",
+      "source": "MIT",
+      "video_themes": ["abstract patterns", "technology", "nature", "people walking"],
+      "voice_tone": "impressed",
+      "difficulty": "medium"
+    },
+    {
+      "id": 14,
+      "category": "history",
+      "subcategory": "royalty",
+      "fact": "Queen Elizabeth II was a trained mechanic. During World War II, she joined the Women's Auxiliary Territorial Service and learned to drive and repair military trucks.",
+      "source": "Royal Family Archives",
+      "video_themes": ["luxury cars", "people walking", "city streets", "architecture"],
+      "voice_tone": "surprised",
+      "difficulty": "medium"
+    },
+    {
+      "id": 15,
+      "category": "science",
+      "subcategory": "human_body",
+      "fact": "Your body contains enough iron to make a 3-inch nail. Most of it is in your blood, helping transport oxygen.",
+      "source": "American Chemical Society",
+      "video_themes": ["technology", "nature", "abstract patterns", "people walking"],
+      "voice_tone": "fascinated",
+      "difficulty": "easy"
+    },
+    {
+      "id": 16,
+      "category": "geography",
+      "subcategory": "cities",
+      "fact": "Tokyo is the world's largest city by population, with over 37 million people. That's more than the entire population of Canada.",
+      "source": "United Nations",
+      "video_themes": ["city streets", "people walking", "architecture", "technology"],
+      "voice_tone": "impressed",
+      "difficulty": "easy"
+    },
+    {
+      "id": 17,
+      "category": "science",
+      "subcategory": "weather",
+      "fact": "Lightning can heat the air around it to 50,000 degrees Fahrenheit. That's five times hotter than the surface of the Sun.",
+      "source": "National Weather Service",
+      "video_themes": ["nature", "space", "technology", "abstract patterns"],
+      "voice_tone": "amazed",
+      "difficulty": "medium"
+    },
+    {
+      "id": 18,
+      "category": "history",
+      "subcategory": "food",
+      "fact": "The first chocolate bar was created in 1847. Before that, chocolate was only consumed as a drink.",
+      "source": "Chocolate History",
+      "video_themes": ["food cooking", "luxury cars", "nature", "people walking"],
+      "voice_tone": "delighted",
+      "difficulty": "easy"
+    },
+    {
+      "id": 19,
+      "category": "psychology",
+      "subcategory": "sleep",
+      "fact": "You can't sneeze in your sleep. The part of your brain that controls sneezing shuts down during REM sleep.",
+      "source": "Sleep Foundation",
+      "video_themes": ["people walking", "nature", "technology", "abstract patterns"],
+      "voice_tone": "curious",
+      "difficulty": "easy"
+    },
+    {
+      "id": 20,
+      "category": "technology",
+      "subcategory": "computers",
+      "fact": "The first computer bug was an actual bug. In 1947, a moth got trapped in a Harvard computer, causing it to malfunction.",
+      "source": "Computer History Museum",
+      "video_themes": ["technology", "animals", "nature", "city streets"],
+      "voice_tone": "amused",
+      "difficulty": "medium"
+    },
+    {
+      "id": 21,
+      "category": "science",
+      "subcategory": "animals",
+      "fact": "Octopuses have three hearts. Two pump blood to the gills, and one pumps it to the rest of the body.",
+      "source": "National Geographic",
+      "video_themes": ["underwater", "nature", "abstract patterns", "technology"],
+      "voice_tone": "fascinated",
+      "difficulty": "medium"
+    },
+    {
+      "id": 22,
+      "category": "history",
+      "subcategory": "transportation",
+      "fact": "The first speeding ticket was issued in 1902. A man was caught driving 45 mph in a 8 mph zone.",
+      "source": "Automotive History",
+      "video_themes": ["luxury cars", "city streets", "people walking", "technology"],
+      "voice_tone": "amused",
+      "difficulty": "easy"
+    },
+    {
+      "id": 23,
+      "category": "psychology",
+      "subcategory": "perception",
+      "fact": "Your brain processes visual information upside down. The image hits your retina inverted, and your brain flips it right-side up.",
+      "source": "Scientific American",
+      "video_themes": ["abstract patterns", "technology", "nature", "people walking"],
+      "voice_tone": "mind-blown",
+      "difficulty": "hard"
+    },
+    {
+      "id": 24,
+      "category": "geography",
+      "subcategory": "oceans",
+      "fact": "The Pacific Ocean is so large that all the world's continents could fit inside it with room to spare.",
+      "source": "National Geographic",
+      "video_themes": ["underwater", "nature", "space", "luxury cars"],
+      "voice_tone": "impressed",
+      "difficulty": "easy"
+    },
+    {
+      "id": 25,
+      "category": "science",
+      "subcategory": "chemistry",
+      "fact": "Diamonds and pencil lead are made of the same element: carbon. The only difference is how the atoms are arranged.",
+      "source": "American Chemical Society",
+      "video_themes": ["luxury cars", "technology", "nature", "abstract patterns"],
+      "voice_tone": "surprised",
+      "difficulty": "medium"
+    },
+    {
+      "id": 26,
+      "category": "history",
+      "subcategory": "communication",
+      "fact": "The first email was sent in 1971. It was just 'QWERTYUIOP' - the top row of letters on a keyboard.",
+      "source": "Computer History Museum",
+      "video_themes": ["technology", "city streets", "people walking", "architecture"],
+      "voice_tone": "nostalgic",
+      "difficulty": "medium"
+    },
+    {
+      "id": 27,
+      "category": "psychology",
+      "subcategory": "emotions",
+      "fact": "You can't tickle yourself. Your brain knows it's coming and suppresses the tickle response.",
+      "source": "Scientific American",
+      "video_themes": ["people walking", "nature", "technology", "abstract patterns"],
+      "voice_tone": "curious",
+      "difficulty": "easy"
+    },
+    {
+      "id": 28,
+      "category": "science",
+      "subcategory": "space",
+      "fact": "There's a planet made of diamonds twice the size of Earth. It's called 55 Cancri e and orbits a star 40 light-years away.",
+      "source": "NASA",
+      "video_themes": ["space", "luxury cars", "nature", "technology"],
+      "voice_tone": "amazed",
+      "difficulty": "hard"
+    },
+    {
+      "id": 29,
+      "category": "technology",
+      "subcategory": "phones",
+      "fact": "The first mobile phone call was made in 1973. The phone weighed 2.5 pounds and cost $3,995 - equivalent to $25,000 today.",
+      "source": "Motorola",
+      "video_themes": ["technology", "luxury cars", "city streets", "people walking"],
+      "voice_tone": "nostalgic",
+      "difficulty": "medium"
+    },
+    {
+      "id": 30,
+      "category": "history",
+      "subcategory": "medicine",
+      "fact": "Doctors used to prescribe cigarettes for asthma. In the 1940s and 50s, cigarette ads claimed smoking could help with breathing problems.",
+      "source": "Medical History",
+      "video_themes": ["people walking", "city streets", "technology", "nature"],
+      "voice_tone": "shocked",
+      "difficulty": "medium"
+    }
+  ],
+  "categories": {
+    "science": ["space", "biology", "physics", "chemistry", "ocean", "human_body", "weather", "animals"],
+    "history": ["medical", "inventions", "war", "royalty", "food", "transportation", "communication", "medicine"],
+    "psychology": ["brain", "behavior", "memory", "sleep", "perception", "emotions"],
+    "geography": ["countries", "cities", "oceans"],
+    "technology": ["internet", "computers", "phones"]
+  },
+  "video_themes": [
+    "luxury cars", "beach waves", "city streets", "people walking", 
+    "nature landscapes", "technology", "abstract patterns", "architecture", 
+    "food cooking", "fashion", "sports", "animals", "space", 
+    "underwater", "forest"
+  ],
+  "voice_tones": [
+    "surprised", "amazed", "baffled", "informative", "mind-blown", 
+    "proud", "amused", "thoughtful", "wondering", "nostalgic", 
+    "impressed", "fascinated", "delighted", "curious", "shocked"
+  ]
+} 

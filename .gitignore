@@ -26,3 +26,9 @@ node_modules
 
 venv/
 .venv
+
+client_secrets.json
+token.pickle
+upload_log.json
+storage/tasks/*/final-*.mp4
+used_facts.json
