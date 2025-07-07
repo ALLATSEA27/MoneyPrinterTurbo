@@ -2,13 +2,13 @@
 # setup_high_quality_cron.sh
 # Interactive setup for high-quality MoneyPrinterTurbo cron jobs
 
-echo "🤖 Setting up automated HIGH-QUALITY MoneyPrinterTurbo pipeline..."
+echo "🤖 Setting up automated HIGH-QUALITY MoneyPrinterTurbo pipeline with YouTube uploads..."
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-WRAPPER_SCRIPT="$SCRIPT_DIR/run_pipeline.sh"
+WRAPPER_SCRIPT="$SCRIPT_DIR/run_pipeline_with_upload.sh"
 
 if [ ! -f "$WRAPPER_SCRIPT" ]; then
-    echo "❌ Error: run_pipeline.sh not found in $SCRIPT_DIR"
+    echo "❌ Error: run_pipeline_with_upload.sh not found in $SCRIPT_DIR"
     exit 1
 fi
 
@@ -25,7 +25,7 @@ add_cron_job() {
 }
 
 echo ""
-echo "Choose your automation schedule for HIGH-QUALITY pipeline:"
+echo "Choose your automation schedule for HIGH-QUALITY pipeline with YouTube uploads:"
 echo "1. Four times daily (9 AM, 11 AM, 1 PM, 3 PM)"
 echo "2. Twice daily (9 AM and 9 PM)"
 echo "3. Once daily (9 AM)"

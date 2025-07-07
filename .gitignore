@@ -32,3 +32,4 @@ token.pickle
 upload_log.json
 storage/tasks/*/final-*.mp4
 used_facts.json
+cron.log
