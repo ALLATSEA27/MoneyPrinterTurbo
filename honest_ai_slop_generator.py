@@ -58,14 +58,21 @@ class HonestAISlopGenerator:
         print(f"Using {len(self.tantric_terms)} tantric/psychedelic search terms")
         print(f"Already used {len(self.used_facts)} facts")
         
-        # Voice options for variety (Edge TTS)
+        # Voice options for variety (Edge TTS) - using only valid voices from official list
         self.voice_options = [
             "en-US-JennyNeural",  # Female
             "en-US-GuyNeural",    # Male
             "en-US-AriaNeural",   # Female
-            "en-US-DavisNeural",  # Male
             "en-US-ChristopherNeural",  # Male
-            "en-US-SaraNeural"    # Female
+            "en-US-EmmaNeural",   # Female
+            "en-US-EricNeural",   # Male
+            "en-US-MichelleNeural",  # Female
+            "en-US-RogerNeural",  # Male
+            "en-US-SteffanNeural",  # Male
+            "en-US-AnaNeural",    # Female
+            "en-US-AndrewNeural", # Male
+            "en-US-AvaNeural",    # Female
+            "en-US-BrianNeural"   # Male
         ]
     
     def load_used_facts(self):
@@ -183,6 +190,10 @@ class HonestAISlopGenerator:
                 elif state == -1:
                     error_msg = status_data.get("message", "Task failed")
                     print(f"❌ Task failed: {error_msg}")
+                    # Get more detailed error information if available
+                    if "error" in status_data:
+                        error_details = status_data["error"]
+                        print(f"Error details: {error_details}")
                     raise Exception(f"Task failed: {error_msg}")
                 
                 # Task is still running

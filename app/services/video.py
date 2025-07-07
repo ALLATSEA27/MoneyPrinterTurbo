@@ -47,9 +47,45 @@ class SubClippedVideoClip:
         return f"SubClippedVideoClip(file_path={self.file_path}, start_time={self.start_time}, end_time={self.end_time}, duration={self.duration}, width={self.width}, height={self.height})"
 
 
+# Enhanced quality settings
 audio_codec = "aac"
 video_codec = "libx264"
 fps = 30
+
+# Quality presets for different output levels
+QUALITY_PRESETS = {
+    "standard": {
+        "fps": 30,
+        "video_codec": "libx264",
+        "audio_codec": "aac",
+        "video_bitrate": "1.5M",
+        "audio_bitrate": "96k",
+        "crf": 23,  # Constant Rate Factor (lower = better quality)
+        "preset": "medium"
+    },
+    "high": {
+        "fps": 30,
+        "video_codec": "libx264",
+        "audio_codec": "aac",
+        "video_bitrate": "2.5M",
+        "audio_bitrate": "128k",
+        "crf": 18,
+        "preset": "slow"
+    },
+    "premium": {
+        "fps": 60,
+        "video_codec": "libx264",
+        "audio_codec": "aac",
+        "video_bitrate": "4M",
+        "audio_bitrate": "192k",
+        "crf": 15,
+        "preset": "slow"
+    }
+}
+
+def get_quality_settings(quality_level: str = "high"):
+    """Get quality settings based on level"""
+    return QUALITY_PRESETS.get(quality_level, QUALITY_PRESETS["high"])
 
 def close_clip(clip):
     if clip is None:
@@ -204,130 +240,83 @@ def combine_videos(
                 clip = video_effects.slidein_transition(clip, 1, shuffle_side)
             elif video_transition_mode.value == VideoTransitionMode.slide_out.value:
                 clip = video_effects.slideout_transition(clip, 1, shuffle_side)
-            elif video_transition_mode.value == VideoTransitionMode.shuffle.value:
-                transition_funcs = [
-                    lambda c: video_effects.fadein_transition(c, 1),
-                    lambda c: video_effects.fadeout_transition(c, 1),
-                    lambda c: video_effects.slidein_transition(c, 1, shuffle_side),
-                    lambda c: video_effects.slideout_transition(c, 1, shuffle_side),
-                ]
-                shuffle_transition = random.choice(transition_funcs)
-                clip = shuffle_transition(clip)
+            else:
+                clip = clip
 
-            if clip.duration > max_clip_duration:
-                clip = clip.subclipped(0, max_clip_duration)
-                
-            # wirte clip to temp file
-            clip_file = f"{output_dir}/temp-clip-{i+1}.mp4"
-            clip.write_videofile(clip_file, logger=None, fps=fps, codec=video_codec)
-            
-            close_clip(clip)
-        
-            processed_clips.append(SubClippedVideoClip(file_path=clip_file, duration=clip.duration, width=clip_w, height=clip_h))
-            video_duration += clip.duration
-            
-        except Exception as e:
-            logger.error(f"failed to process clip: {str(e)}")
-    
-    # loop processed clips until the video duration matches or exceeds the audio duration.
-    if video_duration < audio_duration:
-        logger.warning(f"video duration ({video_duration:.2f}s) is shorter than audio duration ({audio_duration:.2f}s), looping clips to match audio length.")
-        base_clips = processed_clips.copy()
-        for clip in itertools.cycle(base_clips):
-            if video_duration >= audio_duration:
-                break
             processed_clips.append(clip)
-            video_duration += clip.duration
-        logger.info(f"video duration: {video_duration:.2f}s, audio duration: {audio_duration:.2f}s, looped {len(processed_clips)-len(base_clips)} clips")
-     
-    # merge video clips progressively, avoid loading all videos at once to avoid memory overflow
-    logger.info("starting clip merging process")
-    if not processed_clips:
-        logger.warning("no clips available for merging")
-        return combined_video_path
-    
-    # if there is only one clip, use it directly
-    if len(processed_clips) == 1:
-        logger.info("using single clip directly")
-        shutil.copy(processed_clips[0].file_path, combined_video_path)
-        delete_files(processed_clips)
-        logger.info("video combining completed")
-        return combined_video_path
-    
-    # create initial video file as base
-    base_clip_path = processed_clips[0].file_path
-    temp_merged_video = f"{output_dir}/temp-merged-video.mp4"
-    temp_merged_next = f"{output_dir}/temp-merged-next.mp4"
-    
-    # copy first clip as initial merged video
-    shutil.copy(base_clip_path, temp_merged_video)
-    
-    # merge remaining video clips one by one
-    for i, clip in enumerate(processed_clips[1:], 1):
-        logger.info(f"merging clip {i}/{len(processed_clips)-1}, duration: {clip.duration:.2f}s")
-        
-        try:
-            # load current base video and next clip to merge
-            base_clip = VideoFileClip(temp_merged_video)
-            next_clip = VideoFileClip(clip.file_path)
-            
-            # merge these two clips
-            merged_clip = concatenate_videoclips([base_clip, next_clip])
-
-            # save merged result to temp file
-            merged_clip.write_videofile(
-                filename=temp_merged_next,
-                threads=threads,
-                logger=None,
-                temp_audiofile_path=output_dir,
-                audio_codec=audio_codec,
-                fps=fps,
-            )
-            close_clip(base_clip)
-            close_clip(next_clip)
-            close_clip(merged_clip)
-            
-            # replace base file with new merged file
-            delete_files(temp_merged_video)
-            os.rename(temp_merged_next, temp_merged_video)
+            video_duration += clip_duration
+            logger.debug(f"added clip {i+1}, total duration: {video_duration:.2f}s")
             
         except Exception as e:
-            logger.error(f"failed to merge clip: {str(e)}")
+            logger.error(f"failed to process clip {i+1}: {str(e)}")
             continue
+
+    if not processed_clips:
+        logger.error("no clips processed successfully")
+        return ""
+
+    logger.info(f"combining {len(processed_clips)} clips, total duration: {video_duration:.2f}s")
     
-    # after merging, rename final result to target file name
-    os.rename(temp_merged_video, combined_video_path)
+    # Combine all clips
+    final_clip = concatenate_videoclips(processed_clips, method="compose")
     
-    # clean temp files
-    clip_files = [clip.file_path for clip in processed_clips]
-    delete_files(clip_files)
-            
-    logger.info("video combining completed")
+    # Add audio
+    final_clip = final_clip.with_audio(audio_clip)
+    
+    # Write the combined video with enhanced quality settings
+    quality_settings = get_quality_settings("high")  # Default to high quality
+    
+    logger.info(f"writing combined video with quality settings: {quality_settings}")
+    
+    # Prepare ffmpeg parameters for better quality
+    ffmpeg_params = [
+        '-preset', quality_settings["preset"],
+        '-crf', str(quality_settings["crf"]),
+        '-b:a', quality_settings["audio_bitrate"]
+    ]
+    
+    final_clip.write_videofile(
+        combined_video_path,
+        fps=quality_settings["fps"],
+        codec=quality_settings["video_codec"],
+        audio_codec=quality_settings["audio_codec"],
+        bitrate=quality_settings["video_bitrate"],
+        temp_audiofile_path=output_dir,
+        threads=threads,
+        logger=None,
+        ffmpeg_params=ffmpeg_params
+    )
+    
+    # Clean up
+    for clip in processed_clips:
+        close_clip(clip)
+    close_clip(final_clip)
+    close_clip(audio_clip)
+    
     return combined_video_path
 
 
 def wrap_text(text, max_width, font="Arial", fontsize=60):
     # Create ImageFont
-    font = ImageFont.truetype(font, fontsize)
+    try:
+        font_obj = ImageFont.truetype(font, fontsize)
+    except:
+        font_obj = ImageFont.load_default()
 
     def get_text_size(inner_text):
-        inner_text = inner_text.strip()
-        left, top, right, bottom = font.getbbox(inner_text)
-        return right - left, bottom - top
+        bbox = font_obj.getbbox(inner_text)
+        return bbox[2] - bbox[0], bbox[3] - bbox[1]
 
-    width, height = get_text_size(text)
-    if width <= max_width:
-        return text, height
-
-    processed = True
-
+    words = text.split()
     _wrapped_lines_ = []
-    words = text.split(" ")
     _txt_ = ""
+    height = fontsize
+
     for word in words:
         _before = _txt_
         _txt_ += f"{word} "
         _width, _height = get_text_size(_txt_)
+        processed = True
         if _width <= max_width:
             continue
         else:
@@ -472,13 +461,29 @@ def generate_video(
             logger.error(f"failed to add bgm: {str(e)}")
 
     video_clip = video_clip.with_audio(audio_clip)
+    
+    # Use enhanced quality settings for final video generation
+    quality_settings = get_quality_settings("high")  # Default to high quality
+    
+    logger.info(f"writing final video with enhanced quality settings: {quality_settings}")
+    
+    # Prepare ffmpeg parameters for better quality
+    ffmpeg_params = [
+        '-preset', quality_settings["preset"],
+        '-crf', str(quality_settings["crf"]),
+        '-b:a', quality_settings["audio_bitrate"]
+    ]
+    
     video_clip.write_videofile(
         output_file,
-        audio_codec=audio_codec,
+        fps=quality_settings["fps"],
+        codec=quality_settings["video_codec"],
+        audio_codec=quality_settings["audio_codec"],
+        bitrate=quality_settings["video_bitrate"],
         temp_audiofile_path=output_dir,
-        threads=params.n_threads or 2,
+        threads=params.n_threads or 4,
         logger=None,
-        fps=fps,
+        ffmpeg_params=ffmpeg_params
     )
     video_clip.close()
     del video_clip
@@ -522,9 +527,25 @@ def preprocess_video(materials: List[MaterialInfo], clip_duration=4):
             # This is useful when you want to add other elements to the video.
             final_clip = CompositeVideoClip([zoom_clip])
 
-            # Output the video to a file.
+            # Output the video to a file with enhanced quality
             video_file = f"{material.url}.mp4"
-            final_clip.write_videofile(video_file, fps=30, logger=None)
+            quality_settings = get_quality_settings("high")
+            
+            # Prepare ffmpeg parameters for better quality
+            ffmpeg_params = [
+                '-preset', quality_settings["preset"],
+                '-crf', str(quality_settings["crf"])
+            ]
+            
+            final_clip.write_videofile(
+                video_file, 
+                fps=quality_settings["fps"],
+                codec=quality_settings["video_codec"],
+                audio_codec=quality_settings["audio_codec"],
+                bitrate=quality_settings["video_bitrate"],
+                logger=None,
+                ffmpeg_params=ffmpeg_params
+            )
             close_clip(clip)
             material.url = video_file
             logger.success(f"image processed: {video_file}")

@@ -1,4 +1,12 @@
 #!/bin/bash
 cd "/Users/admin/Development/moneyprinter/MoneyPrinterTurbo"
 source venv/bin/activate
-python free_youtube_pipeline.py --mode single
+
+# Log the start time
+echo "$(date): Starting SIMPLE HIGH-QUALITY pipeline..." >> cron.log
+
+# Run the simple high-quality generator (no LLM complexity)
+python3 simple_high_quality_generator.py
+
+# Log the completion
+echo "$(date): SIMPLE HIGH-QUALITY pipeline completed" >> cron.log

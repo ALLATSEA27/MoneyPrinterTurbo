@@ -1,5 +1,5 @@
 import math
-import os.path
+import os
 import re
 from os import path
 
@@ -73,9 +73,17 @@ def save_script_data(task_id, video_script, video_terms, params):
 def generate_audio(task_id, params, video_script):
     logger.info("\n\n## generating audio")
     audio_file = path.join(utils.task_dir(task_id), "audio.mp3")
+    
+    # Ensure task directory exists
+    os.makedirs(utils.task_dir(task_id), exist_ok=True)
+    
+    # Parse and validate voice name
+    voice_name = voice.parse_voice_name(params.voice_name)
+    logger.info(f"Using voice: {voice_name}")
+    
     sub_maker = voice.tts(
         text=video_script,
-        voice_name=voice.parse_voice_name(params.voice_name),
+        voice_name=voice_name,
         voice_rate=params.voice_rate,
         voice_file=audio_file,
     )
@@ -85,11 +93,20 @@ def generate_audio(task_id, params, video_script):
             """failed to generate audio:
 1. check if the language of the voice matches the language of the video script.
 2. check if the network is available. If you are in China, it is recommended to use a VPN and enable the global traffic mode.
+3. check if the voice name is valid and supported.
+4. try using a different voice or check your internet connection.
         """.strip()
         )
         return None, None, None
 
+    # Verify audio file was created and has content
+    if not os.path.exists(audio_file) or os.path.getsize(audio_file) == 0:
+        sm.state.update_task(task_id, state=const.TASK_STATE_FAILED)
+        logger.error(f"Audio file was not created or is empty: {audio_file}")
+        return None, None, None
+
     audio_duration = math.ceil(voice.get_audio_duration(sub_maker))
+    logger.info(f"Audio generated successfully: {audio_file} (duration: {audio_duration}s)")
     return audio_file, audio_duration, sub_maker
 
 

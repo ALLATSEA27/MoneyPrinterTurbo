@@ -1,0 +1,38 @@
+[
+  {
+    "task_id": "cebfd1c6-a321-4b15-9ae9-f8d2125a4801",
+    "video_path": "storage/tasks/cebfd1c6-a321-4b15-9ae9-f8d2125a4801/final-1.mp4",
+    "fact": "In 1923, Charles Osborne started hiccuping and didn't stop for 68 years. He hiccuped an estimated 430 million times before finally stopping in 1990.",
+    "optimized_script": "In 1923, Charles Osborne started hiccuping and didn't stop for 68 years. He hiccuped an estimated 430 million times before finally stopping in 1990.",
+    "category": "history",
+    "subcategory": "medical",
+    "quality": "high",
+    "upload_result": {
+      "video_id": "KZLlnwi4l7o",
+      "url": "https://www.youtube.com/watch?v=KZLlnwi4l7o",
+      "title": "\ud83e\udd2f In 1923, Charles Osborne started hiccuping and did...",
+      "upload_time": "2025-07-07T10:24:51.036643"
+    },
+    "timestamp": "2025-07-07T10:24:51.036763",
+    "cost": "FREE",
+    "engagement_expected": "HIGH"
+  },
+  {
+    "task_id": "fb8d8241-c302-4cb5-921c-055240a56edd",
+    "video_path": "storage/tasks/fb8d8241-c302-4cb5-921c-055240a56edd/final-1.mp4",
+    "fact": "Hmm, the user wants an interesting psychology fact about emotions tailored for a short video clip\u2014around 15 to 30 seconds long and kept under 150 characters in spoken form.They're being very specific,...",
+    "optimized_script": "Hmm, the user wants an interesting psychology fact about emotions tailored for a short video clip\u2014around 15 to 30 seconds long and kept under 150 char...",
+    "category": "psychology",
+    "subcategory": "emotions",
+    "quality": "high",
+    "upload_result": {
+      "video_id": "j8smOrV5S4Y",
+      "url": "https://www.youtube.com/watch?v=j8smOrV5S4Y",
+      "title": "\ud83e\udd2f Hmm, the user wants an interesting psychology fact...",
+      "upload_time": "2025-07-07T11:29:06.697894"
+    },
+    "timestamp": "2025-07-07T11:29:06.697943",
+    "cost": "FREE",
+    "engagement_expected": "HIGH"
+  }
+]

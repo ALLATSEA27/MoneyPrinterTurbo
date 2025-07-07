@@ -1,0 +1,107 @@
+Loaded 30 facts from database
+Using 20 tantric/psychedelic search terms
+Already used 10 facts
+✅ YouTube API authenticated successfully!
+🎬 Starting FREE video generation and upload pipeline...
+📊 Daily uploads: 2/6 (remaining: 4)
+📹 Generating video (FREE - local AI)...
+
+--- Generating Honest AI Slop Video ---
+Fact: The first computer bug was an actual bug. In 1947, a moth got trapped in a Harvard computer, causing it to malfunction.
+Category: technology - computers
+Tantric theme: kaleidoscope
+Voice: en-US-SaraNeural
+API response: {"status":200,"message":"success","data":{"task_id":"396468c5-2f8f-4416-aa8c-f11319bd61eb"}}
+Created task: 396468c5-2f8f-4416-aa8c-f11319bd61eb
+State: 4, Progress: 20.0%
+State: -1, Progress: 0.0%
+❌ Task failed: success
+Traceback (most recent call last):
+  File "/Users/admin/Development/moneyprinter/MoneyPrinterTurbo/free_youtube_pipeline.py", line 250, in <module>
+    pipeline.generate_and_upload_video(args.fact, args.category)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/admin/Development/moneyprinter/MoneyPrinterTurbo/free_youtube_pipeline.py", line 86, in generate_and_upload_video
+    task_id, videos, fact_data = self.generator.generate_honest_video()
+                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/admin/Development/moneyprinter/MoneyPrinterTurbo/honest_ai_slop_generator.py", line 186, in generate_honest_video
+    raise Exception(f"Task failed: {error_msg}")
+Exception: Task failed: success
+Loaded 30 facts from database
+Using 20 tantric/psychedelic search terms
+Already used 13 facts
+✅ YouTube API authenticated successfully!
+🎬 Starting FREE video generation and upload pipeline...
+📊 Daily uploads: 0/6 (remaining: 6)
+📹 Generating video (FREE - local AI)...
+
+--- Generating Honest AI Slop Video ---
+Fact: The first website went live in 1991. It's still online today at info.cern.ch, and it's just a simple text page about the World Wide Web project.
+Category: technology - internet
+Tantric theme: kaleidoscope
+Voice: en-US-AndrewNeural
+❌ Failed to generate video: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /api/v1/videos (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x1069d7e00>: Failed to establish a new connection: [Errno 61] Connection refused'))
+💡 Troubleshooting tips:
+1. Make sure MoneyPrinterTurbo API is running (python main.py)
+2. Check your internet connection
+3. Verify your API keys in config.toml
+4. Try using a different voice or shorter text
+Mon Jul  7 11:05:15 IST 2025: Starting HIGH-QUALITY pipeline...
+2025-07-07 11:05:17.883 | INFO     | app.config.config:load_config:23 - load config from file: /Users/admin/Development/moneyprinter/MoneyPrinterTurbo/config.toml
+2025-07-07 11:05:17.884 | INFO     | app.config.config:<module>:78 - MoneyPrinterTurbo v1.2.6
+✅ YouTube API authenticated successfully!
+🎬 Generating single high-quality video...
+🎬 Starting HIGH-QUALITY video generation and upload pipeline...
+📊 Daily uploads: 1/4 (remaining: 3)
+⚙️ Using HIGH quality settings
+🤖 Generating fresh fact using your LLM...
+🤖 Generating fact for category: human_body - bones
+[32m2025-07-07 11:05:17[0m | [1mINFO[0m | "./app/services/llm.py:21":[34m _generate_response[0m - [1mllm provider: ollama[0m
+⚠️ Fact too long (1296 chars), truncating...
+✅ Generated fact: <think>Okay, user wants a bone-related medical fact that's perfect for a short video. They're very specific about constraints - medically accurate, surprising, under 150 characters spoken form (so act...
+📝 Generated fact: <think>Okay, user wants a bone-related medical fact that's perfect for a short video. They're very specific about constraints - medically accurate, surprising, under 150 characters spoken form (so act...
+📹 Generating high-quality video with dynamic fact...
+
+🎬 Generating High-Quality Short Video (high)
+📝 Fact: <think>Okay, user wants a bone-related medical fact that's perfect for a short video.
+🎨 Theme: water reflections
+🎤 Voice: en-US-GuyNeural
+⚙️ Quality: high
+API response: {"status":200,"message":"success","data":{"task_id":"8dd86d27-3ea1-4d8a-9c3e-dbdc2823adde"}}
+✅ Created task: 8dd86d27-3ea1-4d8a-9c3e-dbdc2823adde
+⏱️ Progress: 20.0% | Time: 0s | State: 4
+⏱️ Progress: 40.0% | Time: 3s | State: 4
+⏱️ Progress: 40.0% | Time: 6s | State: 4
+⏱️ Progress: 40.0% | Time: 9s | State: 4
+⏱️ Progress: 40.0% | Time: 12s | State: 4
+⏱️ Progress: 50.0% | Time: 15s | State: 4
+⏱️ Progress: 50.0% | Time: 18s | State: 4
+⏱️ Progress: 50.0% | Time: 21s | State: 4
+⏱️ Progress: 50.0% | Time: 24s | State: 4
+⏱️ Progress: 75.0% | Time: 27s | State: 4
+⏱️ Progress: 75.0% | Time: 30s | State: 4
+⏱️ Progress: 75.0% | Time: 33s | State: 4
+⏱️ Progress: 100.0% | Time: 37s | State: 1
+🎉 Task completed successfully!
+📹 Video 1: http://localhost:8080/tasks/8dd86d27-3ea1-4d8a-9c3e-dbdc2823adde/final-1.mp4
+📤 Uploading to YouTube with high-quality metadata...
+🎬 Uploading video: 🤯 <think>Okay, user wants a bone-related medical fac...
+📁 File: storage/tasks/8dd86d27-3ea1-4d8a-9c3e-dbdc2823adde/final-1.mp4
+📊 Size: 7.0 MB
+❌ Upload failed: <HttpError 400 when requesting None returned "The request metadata specifies an invalid or empty video title.". Details: "[{'message': 'The request metadata specifies an invalid or empty video title.', 'domain': 'youtube.video', 'reason': 'invalidTitle', 'location': 'body.snippet.title', 'locationType': 'other'}]">
+❌ Upload failed: <HttpError 400 when requesting None returned "The request metadata specifies an invalid or empty video title.". Details: "[{'message': 'The request metadata specifies an invalid or empty video title.', 'domain': 'youtube.video', 'reason': 'invalidTitle', 'location': 'body.snippet.title', 'locationType': 'other'}]">
+❌ Single video generation failed!
+
+📊 High-Quality Pipeline Statistics:
+{
+  "total_uploads": 1,
+  "quality_distribution": {
+    "high": 1
+  },
+  "category_distribution": {
+    "history": 1
+  },
+  "last_upload": "2025-07-07T10:24:51.036763"
+}
+Mon Jul  7 11:06:07 IST 2025: HIGH-QUALITY pipeline completed
+Mon Jul  7 11:44:22 IST 2025: Starting SIMPLE HIGH-QUALITY pipeline...
+Mon Jul  7 11:45:05 IST 2025: SIMPLE HIGH-QUALITY pipeline completed
